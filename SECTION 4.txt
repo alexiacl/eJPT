@@ -1,7 +1,7 @@
 INDEX
 
-	* HTTP METHOD ENUMERATION
-	* DIRECTORY ENUMERATION WITH GOBUSTER
+	• HTTP METHOD ENUMERATION
+	• DIRECTORY ENUMERATION WITH GOBUSTER
 	• DIRECTORY ENUMERATION WITH BURPSUITE
 	• SCANNING WITH ZAPROXY
 	• SCANNING WITH NIKTO
@@ -12,9 +12,9 @@ INDEX
 	• ACTIVE CRAWLING WITH ZAPROXY
 
 
-#THEORY
+THEORY
 
-##Websites
+Websites
 Files on a server that we can access with a browser. 
 Most common used formats are HTML, CSS for styles and JavaScript for functionality.
 These files are saved in web servers like Apache, IIS, Nginx,... or in off premise hosts like amazon, azure...
@@ -43,9 +43,9 @@ HTTP does not maintain sessions so cookies are needed so accounts can stay activ
 HTTP vs HTTPS
 HTTPSecure wraps info sent to server encrypted
 
-#LABS
+LABS
 
-##HTTP METHOD ENUMERATION
+HTTP METHOD ENUMERATION
 
 Commands: curl, dirb
 Tools: Burp
@@ -66,7 +66,7 @@ curl -T <file> <url>
 curl -X DELETE <url>
 ```
 
-##DIRECTORY ENUMERATION GOBUSTER
+DIRECTORY ENUMERATION GOBUSTER
 
 Commands: gobuster
 Notes: 
@@ -77,14 +77,14 @@ gobuster dir -u <url> -w <ruta a la wordlist> -b <ignored status codes>
 gobuster dir -u <url> -w <ruta a la wordlist> -b <ignored status codes> -x <format files> -r
 ```
 
-##DIRECTORY ENUMERATION WITH BURPSUITE
+DIRECTORY ENUMERATION WITH BURPSUITE
 
 Tool: Burp Suite
 Notes:
 	• Intercept the request with burp and send it to the Intruder. Once in the intruder add $$ to the route and then load as payload a list of the most used routes
 
 
-##SCANNING WITH ZAPROXY
+SCANNING WITH ZAPROXY
 
 Tool: ZA Proxy
 Notes:
@@ -102,7 +102,7 @@ Notes:
 	10. Launch attack
 
 
-##SCANNING WITH NIKTO
+SCANNING WITH NIKTO
 
 Tool: Nikto
 Notes:
@@ -115,7 +115,7 @@ nikto -h <url> -Tuning <vuln number> -Display v
 nikto -h <url> -Tuning <vuln number> -o <file> -Format <format>
 ```
 
-##PASSIVE CRAWLING WITH BURP SUITE
+PASSIVE CRAWLING WITH BURP SUITE
 
 Tool: Burp Suite
 Notes:
@@ -123,7 +123,7 @@ Notes:
 	• Use scope so that only the pages we want appear in the sitemap.
 
 
-##SQL INJECTION WITH SQLMAP
+SQL INJECTION WITH SQLMAP
 
 Tool: sqlmap
 Notes:
@@ -140,7 +140,7 @@ ssqlmap -r <request> -p <param>
 ```
 
 
-##XSS ATTACK WITH XSSER
+XSS ATTACK WITH XSSER
 
 Tool: xsser
 Notes:
@@ -153,7 +153,7 @@ xsser --url <url>
 xsser --url <url> --Fp <specific payload>
 ```
 
-##ATTACKING HTTP LOGIN FORM WITH HYDRA
+ATTACKING HTTP LOGIN FORM WITH HYDRA
 
 Tool: hydra
 Notes:
@@ -163,7 +163,7 @@ hydra -L <user wordlist> -P <password wordlist> <protocol://server> <service "ru
 
 
 
-##ATTACKING BASIC AUTH WITH BURP SUITE
+ATTACKING BASIC AUTH WITH BURP SUITE
 
 Tool: Burp suite
 Notes:
@@ -173,7 +173,7 @@ Notes:
 	• When setting payload in intruder there is a option called "payload processing" below "payload options" that has the option of adding prefix to payload set and to add rules like encoding.
 
 
-##ACTIVE CRAWLING WITH ZAPROXY
+ACTIVE CRAWLING WITH ZAPROXY
 
 Tool: ZA Proxy
 Notes:
