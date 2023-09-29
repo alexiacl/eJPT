@@ -81,8 +81,10 @@ Are essential components of the DNS infrastructure that provide information.  Ea
 - NS: name server register
   
 - A: subdomain IP address register
+
+More dns information with:
   
-- Dnsdumpster: gráfica con hosts. <https://dnsdumpster.com/>
+- Dnsdumpster: hosts graphs. <https://dnsdumpster.com/>
 
 ```
 dnsrecon -d <domain name>
