@@ -13,6 +13,10 @@ Collect all data possible: IP addresses, name, phones, other type of information
 
     ```
     host <website>
+
+    traceroute
+
+    ping
     ```
 
 4. **Look for files**:
