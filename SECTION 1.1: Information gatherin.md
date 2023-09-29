@@ -1,8 +1,6 @@
-# ASSESSMENT METHODOLOGIES
+# INFORMATION GATHERING
 
-## INFORMATION GATHERING
-
-### Passive recognition
+## Passive recognition
 
 Manual website recon and foot printing
 =========================================
@@ -158,7 +156,7 @@ When emails are found we can check if credentials have been leaked with:
 - <https://haveibeenpwned.com/>
 
 
-### Active recognition
+## Active recognition
 
 DNS Zone Transfers
 ==================
