@@ -45,6 +45,7 @@ In the **response**(sent by server):
 -   POST: sends info to the server, form, login,...
 -   OPTIONS: indicates http methods available in the server
 -   PUT: put files on the server
+-   HEAD:  used to retrieve the headers of a resource
 
 **HTTP Status Codes:**
 
@@ -57,7 +58,7 @@ In the **response**(sent by server):
 
 HTTP does not maintain sessions so cookies are needed so accounts can stay activated
 
-HTTP vs HTTPS
+**HTTP vs HTTPS**
 
 HTTPSecure wraps info sent to server encrypted
 
@@ -83,19 +84,15 @@ HTTP METHOD ENUMERATION
 
     -   Intercept the request and in the header of the method we change to the method we want to see if it exists, if we want to use the PUT method to upload files then we indicate PUT /<path.txt> and in the body information we write at the end the text that we want the file to contain.
 
-`dirb <url>`
-
-`curl -X <method> <url> -v`
-
-`curl -I <url> -v`
-
-`curl -X <method> <url> -d <parm1=value&parm2=value...> -v`
-
-`curl <url> --upload-files <file>`
-
-`curl -T <file> <url>`
-
-`curl -X DELETE <url>`
+```
+dirb <url>
+curl -X <method> <url> -v
+curl -I <url> -v
+curl -X <method> <url> -d <parm1=value&parm2=value...> -v
+curl <url> --upload-files <file>
+curl -T <file> <url>
+curl -X DELETE <url>
+```
 
 DIRECTORY ENUMERATION GOBUSTER
 ------------------------------
@@ -105,13 +102,11 @@ DIRECTORY ENUMERATION GOBUSTER
 **Notes:**
 
 -   To follow the redirects use the -r option
-
-`gobuster dir -u <url> -w <ruta a la wordlist>`
-
-`gobuster dir -u <url> -w <ruta a la wordlist> -b <ignored status codes>`
-
-`gobuster dir -u <url> -w <ruta a la wordlist> -b <ignored status codes> -x <format files> -r`
-
+```
+gobuster dir -u <url> -w <ruta a la wordlist>
+gobuster dir -u <url> -w <ruta a la wordlist> -b <ignored status codes>
+gobuster dir -u <url> -w <ruta a la wordlist> -b <ignored status codes> -x <format files> -r
+```
 DIRECTORY ENUMERATION WITH BURPSUITE
 ------------------------------------
 
@@ -150,15 +145,12 @@ SCANNING WITH NIKTO
 
 -   It has options of trying specific vulnerabilities using -Tunning
 -   Nikto -Help for extra info
-
-`nikto -h <url>`
-
-`nikto -h <url> -Tuning <vuln number>`
-
-`nikto -h <url> -Tuning <vuln number> -Display v`
-
-`nikto -h <url> -Tuning <vuln number> -o <file> -Format <format>`
-
+```
+nikto -h <url>
+nikto -h <url> -Tuning <vuln number>
+nikto -h <url> -Tuning <vuln number> -Display v
+nikto -h <url> -Tuning <vuln number> -o <file> -Format <format>
+```
 PASSIVE CRAWLING WITH BURP SUITE
 --------------------------------
 
@@ -178,21 +170,15 @@ SQL INJECTION WITH SQLMAP
 
 -   It is possible to save a request doing right click on the request intercepted by burp and selecting "copy to file" so then you can pass it to sqlmap
 -   When burp response is affected by sqlmap payload we can try to write in the payload things like version() so it is reflected in the respone
-
-`sqlmap -u <url> --cookie <"copy and paste cookie intercepted by burp proxy"> -p <parameter>`
-
-`sqlmap -u <url> --cookie <""> -p <param> --dbs`
-
-`sqlmap -u <url> --cookie <""> -p <param> -D <database>`
-
-`sqlmap -u <url> --cookie <""> -p <param> -D <database> --tables`
-
-`sqlmap -u <url> --cookie <""> -p <param> -D <database> -T <tabla> --columns`
-
-`sqlmap -u <url> --cookie <""> -p <param> -D <database> -T <tabla> -C <columna> --dump`
-
-`ssqlmap -r <request> -p <param>`
-
+```
+sqlmap -u <url> --cookie <"copy and paste cookie intercepted by burp proxy"> -p <parameter>`
+sqlmap -u <url> --cookie <""> -p <param> --dbs
+sqlmap -u <url> --cookie <""> -p <param> -D <database>
+sqlmap -u <url> --cookie <""> -p <param> -D <database> --tables
+sqlmap -u <url> --cookie <""> -p <param> -D <database> -T <tabla> --columns
+sqlmap -u <url> --cookie <""> -p <param> -D <database> -T <tabla> -C <columna> --dump
+ssqlmap -r <request> -p <param>
+```
 XSS ATTACK WITH XSSER
 ---------------------
 
@@ -201,17 +187,13 @@ XSS ATTACK WITH XSSER
 **Notes:**
 
 -   Include "XSS" where we want the payload to be put
-
-`xsser --url <url> -p <param>`
-
-`xsser --url <url> -p <param> -auto`
-
-`xsser --url <url> -p <param> --Fp <specific payload>`
-
-`xsser --url <url>`
-
-`xsser --url <url> --Fp <specific payload>`
-
+```
+xsser --url <url> -p <param>
+xsser --url <url> -p <param> -auto
+xsser --url <url> -p <param> --Fp <specific payload>
+xsser --url <url>
+xsser --url <url> --Fp <specific payload>
+```
 ATTACKING HTTP LOGIN FORM WITH HYDRA
 ------------------------------------
 
