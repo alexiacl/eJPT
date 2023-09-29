@@ -1,9 +1,25 @@
 # INFORMATION GATHERING
 
-## Passive recognition
+First step in any penetration test. Collect al possible information of a company, website or any system.
 
-Manual website recon and foot printing
-=========================================
+- Passive gathering:
+    - IP adressess
+    - DNS information
+    - Domain names
+    - Email adressess
+    - Web technologies
+    - Subdomains
+- Active gathering:
+    - Open ports
+    - Internal infraestructure
+    - Enumerating information from systems
+
+Passive recognition
+======================
+
+Gather information without engaging with the target
+
+## Manual website recon and foot printing
 
 Collect all data possible: IP addresses, name, phones, other type of information...
 
@@ -47,8 +63,7 @@ Collect all data possible: IP addresses, name, phones, other type of information
     webhttrack
     ```
 
-Whois enumeration
-=================
+## Whois enumeration
 
 Internet protocol for querying databases, domain names, ip address block, ... 
 
@@ -58,31 +73,48 @@ To obtain nameserver, actual owner, other personal data, ... we can use:
 whois
 ```
 
-Netcraft
-========
+## Netcraft
 
 Domain information, web technologies, user data... all information that previously we obtained manually. SSL, TFL vulnerabilities, trackers on the web
 
 <https://sitereport.netcraft.com/>
 
-DNS Recon
-=========
+## DNS Recon
 
-Process of gathering information about a domain. It includes the following methodologies:
+**DNS**: protocol used to resolve hostnames to IP adressess.
+
+**DNS Servers**: servers that contains hostnames and their corresponding IP adresses. 
+
+**DNS Recon**: Process of gathering information about a domain. It includes the following methodologies:
 
 - **Discovering DNS Servers**: Identifying the DNS servers responsible for resolving domain names for a target network.
 
 - **Enumeration**: Enumerating DNS records to gather information such as subdomains, mail servers, and other DNS resource records (A, AAAA, MX, TXT, etc.) that can be useful for mapping the target's network and potential attack vectors.
 
-**DNS records**
+**DNS records**: Are essential components of the DNS infrastructure that provide information.  Each DNS record type serves a specific purpose and contains different types of information. 
 
-Are essential components of the DNS infrastructure that provide information.  Each DNS record type serves a specific purpose and contains different types of information. Here are some common DNS record types:
+![DNS Records](image.png)
 
-- MX: mail register
 
-- NS: name server register
-  
-- A: subdomain IP address register
+Here are some common DNS record types:
+ 
+- A: hostname to IPv4
+
+- AAAA: domain to ipv6
+
+- NS: name server
+
+- MX: mail server
+
+- CName: alias
+
+- TXT: text record
+
+- SOA: domain authority
+
+- SRV: service
+
+- PTR: ip to hostname
 
 More dns information with:
   
@@ -92,33 +124,34 @@ More dns information with:
 dnsrecon -d <domain name>
 ```
 
-WAF
-===
+## WAF
 
-A fingerprinting tool that analyzes WAF solutions, identifies if web is protected by firewall or WAF and which WAF is using. 
-
-**Notes:**
-
-- Using -a for testing all waf instances.
-
-```
-wafw00f
-```
-
-Subdomain enumeration
-=====================
+**WAF**: Web Applicaiton Firewall
 
 **Notes:**
 
-- Using -e to specify search engines.
+- With `wafw00f` use -a for testing all waf instances.
+
+A fingerprinting tool that analyzes WAF solutions is wafw00f, identifies if web is protected by firewall or WAF and which WAF is using. 
+
+```
+wafw00f -a
+```
+
+## Subdomain enumeration
+
+**Notes:**
+
+- Using -e to specify search engines with `sublist3r`.
 - The command sublist3r has the option of doing bruteforce attacks or passive recognition.
 
 ```
 sublist3r
 ```
 
-Google dorks
-============
+## Google dorks
+
+**Google dorks**: search queries that use advanced operators to find specific information on the internet. The most important ones:
 
 - site:
 
@@ -140,62 +173,41 @@ Google dorks
 
 - Google Hacking Database
 
-Email harvesting
-================
+## Email harvesting
 
 When looking for exposed mail address, hosts and IPs. 
 
 **Notes:**
-- Using -b for certain search engine.
+- Using -b for certain search engine with `thHarvester`.
 
 ```
 theHarvester
 ```
 
-Leaked passwords databases
-==========================
+## Leaked passwords databases
 
 When emails are found we can check if credentials have been leaked with:
 
 - <https://haveibeenpwned.com/>
 
 
-## Active recognition
-
-DNS Zone Transfers
+Active recognition
 ==================
 
-To resolve domains name or hostnames to IP addresses:
+Activaly engaging with the target.
+
+## DNS Zone Transfers
+
+**DNS Zones files**: contains records for a particulary domain.
+
+**Zone transfer**: transfer dns records from a server to another one, an attacker can copy the primary dns zone files to another one. 
+
+**Tool**:
 
 - <https://zonetransfer.me>
 
-**DNS records:**
 
-- A: domain to ipv4
-
-- AAAA: domain to ipv6
-
-- NS: name server
-
-- MX: mail server
-
-- CName: alias
-
-- TXT: text record
-
-- SOA: domain authority
-
-- SRV: service
-
-- PTR: ip to hostname
-
-**Dns interrogation** is the process of enumerating dns records.
-
-**Zone transfer**: transfer dns record to another one if misconfigured an attacker can copy the primary dns zone files to another one. 
-
-**Zones files**: contains records for a particulary domain.
-
-For zone transfer, bruteforce, ...
+For zone transfer and bruteforce attacks:
 
 `dnsenum`
 
@@ -207,7 +219,7 @@ Another dns look up utility:
 
 `dig `
 
-For zone transfer attack
+For zone transfer attacks:
 
 ```
 dig axfr @<domain>
@@ -215,8 +227,7 @@ dig axfr @<domain>
 fierce -dns
 ```
 
-Host discovery with Nmap
-========================
+## Host discovery with Nmap
 
 After indetifying my IP use nmap for host discovery.
 
@@ -230,35 +241,34 @@ nmap -sn <url>
 sudo netdiscover
 ```
 
-Port Scanning with nmap
-=======================
+## Port Scanning with nmap
 
 The following options are the most common ones:
 
-- -sn: no port scan
+- `-sn`: no port scan
 
-- -Pn: for windows host so they don't block ping request
+- `-Pn:` for windows host so they don't block ping request
 
-- -p- : tcp port range
+- `-p-` : tcp port range
 
-- -p<port,port>: specify port or ports
+- `-p` <port,port>: specify port or ports
 
-- -F: fast scan with 100 top ports
+- `-F`: fast scan with 100 top ports
 
-- -sU: udp port scanning
+- `-sU`: udp port scanning
 
-- -v: display info on whats happening on the background
+- `-v`: display info on whats happening on the background
 
-- -sV: service detection
+- `-sV`: service detection
 
-- -O: operating system detection
+- `-O`: operating system detection
 
-- -sC: scripts on the open ports to identify more information
+- `-sC`: scripts on the open ports to identify more information
 
-- -A: scripts, servide detectation and operating system
+- `A`: scripts, servide detectation and operating system
 
-- T0-T5: slower-faster, higher more noise
+- `T0-T5`: slower-faster, higher more noise
 
-- -oN <file>: output
+- `-oN` <file>: output
 
-- -oX <file>: for metasploit
+- `-oX` <file>: for metasploit
