@@ -45,6 +45,7 @@ fping -I tap0 -g <subnet> -a 2>/dev/null
 - UDP (User Datagram Protocol):  it does not establish a connection before data transfer
 
 - TCP open vs closed port
+
 ![Alt text](image-1.png)
 
 - TCP vs UDP
