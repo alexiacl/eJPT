@@ -17,7 +17,7 @@
 
 ```
 ip a
-if config
+ifconfig
 ipconfig /all
 arp-scan
 traceroute
