@@ -54,12 +54,12 @@ fping -I tap0 -g <subnet> -a 2>/dev/null
 
 ## Windows recon
 
-- BIND ISC: DNS Server
-- SNMP: network management protocol used to monitor and manage network devices.
-- TFTP:  Trivial File Transfer Protocol, operates over UDP, is designed for transferring files between systems on a network
+- **BIND ISC**: DNS Server
+- **SNMP**: network management protocol used to monitor and manage network devices.
+- **TFTP**:  Trivial File Transfer Protocol, operates over **UDP**, is designed for transferring files between systems on a network
 
 ```
 ipconfig /all
 tftp <ip> <port>
-    $tftp> status
+    $tftp > status
 ```
