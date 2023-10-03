@@ -145,7 +145,7 @@ Privileges needed to impersonation attacks:
 
 Alternate Data Streams designed to provide compatibility with MacOS HFS. Contains Data Stream and Resource stream metadata. Can be used to hide malicious code.
 
-## HASHES
+## Hashes
 
 Process of converting a piece of data into another values. Hashes are stored in lsass.exe process.
 
@@ -169,3 +169,96 @@ Unattendeed windows setupt utility automate mass installation and deployments of
 
 
 ## LINUX
+
+Free and open source operating system which is composed of Linux kernel and GNU toolkit, which is a collection of software.
+
+There are specific services and protocols typically found in linu that provide an attacker with an access vector:
+
+- Apache web server
+- FTP
+- SSH
+- SAMBA
+
+**Shellshock** is a famous vulnerability in the Bash shell v1.3 that allows remote execution. Bash is the default shell for most Linux distributions.
+
+Apache web servers are configured to run CGI, interface to run scripts on Linux systems and displays the output to the client.
+
+![Alt text](image-4.png)
+
+![Alt text](image-3.png)
+
+**Steps for exploitation**:
+
+1. Locate script that allows us to communicate with bash.
+
+2. In Apache web server find a legitimate CGI script so when it is executed a new proccess will be initiated to run it.
+
+3. Metasploit module
+
+FTP
+===
+
+File transfer protocol used to share files between a server and clients. Authentication is made with username and password.
+
+**Port**:21
+
+- In some cases anonymous access is possible.
+
+SSH
+===
+
+Secure Shell used for remote access to servers and systems
+
+**Port**: 22 or any other TCP port
+
+Two type of authentication:
+- User and password
+- Key based authentication
+
+SAMBA
+=====
+
+Linux implementation of SMB. Tools are more information in SMB and enumeration module.
+
+PRIVILEGE ESCALATION
+============
+
+##  Kernel exploits
+
+Tool: Linux-Exploit-Suggester
+
+## Cron jobs
+
+- **Cron** is a utility that runs applications, scripts and other on a specific schedule (task scheduuling). Cron can be used to automate an repeat tasks. 
+
+- **Cron Job**: When an app or script is configured to run repeatedly with Cron.  
+
+- **Crontab**: is a configuration file to store and track Cron jobs. Any script run by cron job will run as the root user. 
+
+**Steps for exploitation**:
+
+We will need to find cron jobs scheduled or files being processed by cron jobs.
+
+## SUID Binaries
+
+In addition of the three main permissions (read, write, execute)  linux has also a specialized permission call SUID, Set Owner User ID.
+
+This permissions provides users to execute scripts or binaries with the permissions of the files owner but limited to the execution itself.
+
+**Steps to exploitation**:
+
+1. Owner of the SUID binary
+2. Access permissions: executable permissions
+
+## Hashes
+
+In linux multiple users can access simultaneously in a system. Al the information for all accounts is stored in the passwd file: /etc/passwd accessible by any user. In this file passwrods are encrypted. All the encrypted passwords can be found in /etc/shadow that onlu root account can access.
+
+In passwd files there are different hashes:
+- $1: md4
+- $2: blowfish
+- $5: sha-256
+- $6: sha-512
+
+
+
