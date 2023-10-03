@@ -21,7 +21,6 @@ Windows implementation of files share is called **CIFS** and is the modern and e
 `nmap -sC`: for default scripts
 
 ```
-
 smb-os-discovery
 
 smb-protocols
@@ -55,7 +54,6 @@ smb-enum-services --script-args smbusername=<>,smbpassword=<>
 Enumerate samba share drives across an entire domain
 
 ```
-
 smbmap u <> p <> -d <. o el dominio> -H <ip>
 
 smbmap u <> p <> -d <. o el dominos> -H <ip> -x <command>
@@ -73,7 +71,7 @@ smbmap u <> p <> -d <. o el dominos> -H <ip> --download '<file>'
 
 **Notes**:
 
-- To initiate metasploit: `msfconsole``
+- To initiate metasploit: `msfconsole`
 
 - For options inside a module `show options`
 
@@ -104,7 +102,6 @@ FTP client to access SMB/CIFS resources on servers. Access files on windows syst
 - Use `get <file>` when you are logged in a host to save a file
 - Use `-L` for listing hosts
 ```
-
 smbclient -L <ip> -N
 
 smbclient //<ip>/Public -N
@@ -187,7 +184,7 @@ File transfer protocol: store files on a server an access them remotely
 
 **Port**: 21
 
-**1. Connect**
+**1. Connection**
 
 `ftp <ip>`: to connect via ftp
 
@@ -266,7 +263,7 @@ It uses aspx files
 
 - `dirb http://<ip> <wordlist>`
 
-**Nmap scripts**:
+**1.1 Nmap scripts**:
 
 ```
 http-enum
@@ -276,14 +273,16 @@ http-headers
 http-methods --script-args http-methods.url-path=<path>
 
 http-webdav-scan
+
+banner
 ```
 **2. Apache**
 
-**Nmap scripts:**
+**2.1. Nmap scripts:**
 
 `banner`: information that my machine receives when it connects remotely the first time to another machine
 
-**Metasploit**:
+**2.2. Metasploit**:
 ```
 msfconsole
 
