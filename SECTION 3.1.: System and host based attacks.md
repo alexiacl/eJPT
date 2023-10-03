@@ -56,9 +56,9 @@ Requires username and password authentication.
 **Steps for exploitation**:
 1. Identifying Microsoft IIS Server
 2. Brute force authentication attacks:
-    - davtest
+    - `davtest`
 3. Upload files
-    - cadaver
+    - `cadaver`
 
 **Ports**: 80/443
 
@@ -79,10 +79,10 @@ File sharing protocol to share files and peripherrals in a local network.
 **Steps for exploitation**:
 
 1. Brute force with username and password/password hashes
-    - enum4linux
-    - hydra
-    - smbmap
-    - metasploit
+    - `enum4linux`
+    - `hydra`
+    - `smbmap`
+    - `metasploit`
 2. Execution of arbitrary commands
 
 RDP
@@ -102,7 +102,7 @@ Remote management protocol to facilitate remote access to windows systems over H
 **Ports**: 5985/5986 and 443
 
 **Steps for exploitation**:
-- Tools: crackmapexec, evil-winrm
+- Tools: `crackmapexec`, `evil-winrm`
 
 PRIVILEGE ESCALATION
 ====================
@@ -115,7 +115,8 @@ Core program that has complete control of resources and hardware. Translation la
 
 - User mode: limited access to system resources and functionality
 - Kernel mode: unrestricted access
-- Tools: Windows-Exploit-Suggester and Windows-Kernel-Exploits
+
+**Tools**: `Windows-Exploit-Suggester` and `Windows-Kernel-Exploits`
 
 ##UAC
 
@@ -123,7 +124,7 @@ User account crontrol used to ensure that changes in the operating system requir
 
 **Steps for exploiting**:
 1. Access with a user account of local administrator group
-2. Tool: UACMe
+2. **Tool**: `UACMe`
 
 ##Tokens
 
@@ -138,7 +139,7 @@ Privileges needed to impersonation attacks:
 - SeImpersonatePrivilege
 
 
-**Tool**: metasploit with - Incognito
+**Tool**: `metasploit with - Incognito`
 
 ##ADS
 
@@ -151,9 +152,9 @@ Process of converting a piece of data into another values. Hashes are stored in 
 - LM: in windows prior to NT 4.0, breaks password in two, convert them to uppercase and then hash it with DES algoritm
 - NTLM: protocols to facilitate authentication with username and passwords. Uses MD4 hash algorithm.
 
-**Tools**: mimikatz, metasploit (Kiwi)
+**Tools**: `mimikatz`, `metasploit` (Kiwi)
 
-**Pass-The-Hash attacks**: metasploit, crackmapexec
+**Pass-The-Hash attacks**: `metasploit`, `crackmapexec`
 
 ## SAM
 
