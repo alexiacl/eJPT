@@ -241,18 +241,18 @@ We will need to find cron jobs scheduled or files being processed by cron jobs.
 
 ## SUID Binaries
 
-In addition of the three main permissions (read, write, execute)  linux has also a specialized permission call SUID, Set Owner User ID.
+In addition of the three main permissions (read, write, execute)  linux has also a specialized permission call **SUID, Set Owner User ID**.
 
 This permissions provides users to execute scripts or binaries with the permissions of the files owner but limited to the execution itself.
 
-**Steps to exploitation**:
+**Steps for exploitation**:
 
 1. Owner of the SUID binary
 2. Access permissions: executable permissions
 
 ## Hashes
 
-In linux multiple users can access simultaneously in a system. Al the information for all accounts is stored in the passwd file: /etc/passwd accessible by any user. In this file passwrods are encrypted. All the encrypted passwords can be found in /etc/shadow that onlu root account can access.
+In linux multiple users can access simultaneously in a system. Al the information for all accounts is stored in the passwd file: `/etc/passwd`accessible by any user. In this file passwrods are encrypted. All the encrypted passwords can be found in `/etc/shadow´ that onlu root account can access.
 
 In passwd files there are different hashes:
 - $1: md4
