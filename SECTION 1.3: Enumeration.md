@@ -18,11 +18,7 @@ Windows implementation of files share is called **CIFS** and is the modern and e
 
 **1. Nmap scripts SMB**
 
-Fo default scripts:
-
-`nmap -sC`
-
-SMB scripts:
+`nmap -sC`: for default scripts
 
 ```
 
@@ -49,10 +45,10 @@ smb-enum-groups --script-args smbusername=<>,smbpassword=<>
 smb-enum-services --script-args smbusername=<>,smbpassword=<>
 ```
 
-**Note**:
-- If we find $IPC in shares then it exist null sessions
+**Notes**:
+- If we find **$IPC** in shares then it exist null sessions
 
-SMBv1: eternalblue
+- **SMBv1**: eternalblue
 
 **2. SMBmap**
 
@@ -75,27 +71,19 @@ smbmap u <> p <> -d <. o el dominos> -H <ip> --download '<file>'
 
 **3. Metasploit**
 
-**Notas**:
+**Notes**:
 
-- Para iniciar metasploit: `msfconsole``
+- To initiate metasploit: `msfconsole``
 
-- Cuando usemos un módulo y queramos ver que opciones de variables hay `show options`
+- For options inside a module `show options`
 
 
 ```
+msfconsole
 
-use auxiliary/scanner/smb/smb_version
+    use auxiliary/scanner/smb/smb_version
 
-set RHOSTS <ip address>
-
-run
-````
-```
-use auxiliary/scanner/smb/smb_enumusers
-
-set RHOSTS <ip>
-
-run
+    use auxiliary/scanner/smb/smb_enumusers
 ```
 
 **4. nmblookup**
@@ -317,7 +305,7 @@ Allows many users to store information in databases. Data can be pulled from dat
 
 **Port**: 3306
 
-**Connection**:
+**1. Connection**:
 ```
 mysql -h <IP> -u <user>
 
@@ -332,7 +320,7 @@ mysql -h <IP> -u <user>
     select load_file("<path>")
 ```
 
-**Metasploit**:
+**2. Metasploit**:
 ```
 msfconsole
 
@@ -342,7 +330,7 @@ msfconsole
 ```
 
 
-**Nmap scripts**:
+**3. Nmap scripts**:
 
 ```
 
@@ -373,7 +361,7 @@ SQL version of microsoft
 
 **Port**: 1433
 
-**Metasploit**:
+**1. Metasploit**:
 ```
 msfconsole
 
@@ -388,11 +376,11 @@ msfconsole
     use auxiliary/admin/mssql/mssql_enum_domain_accounts
 ```
 
-**Hydra**:
+**2. Hydra**:
 
 `hydra -l <user> -P <wordlist> <IP> mysql`
 
-**Nmap scripts**:
+**3. Nmap scripts**:
 ```
 --script ms-sql-info
 
