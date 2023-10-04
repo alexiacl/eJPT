@@ -230,7 +230,8 @@ ssh-run --script-args="ssh-run.cmd=<command>,ssh-run.username=<>,ssh-run.passwor
 **3. Metasploit**:
 ```
 msfconsole
-            auxiliary/scanner/ssh/shh_login
+    auxiliary/scanner/ssh/shh_login
+    auxiliary/scanner/ssh/shh_version
 ```
 
 HTTP

@@ -15,10 +15,10 @@ Focused on misconfigurations and inherent vulnerabilities on the target OS.
 - Conflicker MS08-67
 - EternalBlue MS17-010
     - Windows versions: windows Vista, 7, 8.1, 10, Server 2008, 2012, 2016
-    - Tools: AutoBlue, metasploit
+    - **Tools**: AutoBlue, metasploit
 - BlueKeep
     - Windows versions: Vista, 2008 & R2, XP, 7
-    - Tools: metasploit
+    - **Tools**: metasploit
 
 
 Types of **Windows vulnerabilities**:
@@ -179,7 +179,10 @@ There are specific services and protocols typically found in linu that provide a
 - SSH
 - SAMBA
 
-**Shellshock** is a famous vulnerability in the Bash shell v1.3 that allows remote execution. Bash is the default shell for most Linux distributions.
+Shellshock
+==========
+
+Famous vulnerability in the Bash shell v1.3 that allows remote execution. Bash is the default shell for most Linux distributions.
 
 Apache web servers are configured to run CGI, interface to run scripts on Linux systems and displays the output to the client.
 
@@ -189,11 +192,10 @@ Apache web servers are configured to run CGI, interface to run scripts on Linux 
 
 **Steps for exploitation**:
 
-1. Locate script that allows us to communicate with bash.
-
-2. In Apache web server find a legitimate CGI script so when it is executed a new proccess will be initiated to run it.
-
-3. Metasploit module
+1. Locate script that allows us to communicate with bash (.sh, .cgi).
+2. `nmap --script http-shellchock --script-args "http-shellshock.uri=<path to script>"`
+3. Look for exploits in github
+4. Metasploit module
 
 FTP
 ===
@@ -203,6 +205,13 @@ File transfer protocol used to share files between a server and clients. Authent
 **Port**:21
 
 - In some cases anonymous access is possible.
+- **Tools**: `ftp`, `hydra`, `nmap --script ftp-brute`, `nmap --script ftp-anon`
+
+```
+use exploit/unix/ftp/proftpd_133c_backdoor
+use post/linux/gather/hashdump
+use auxiliary/analyze/crack_linux
+```
 
 SSH
 ===
@@ -215,10 +224,14 @@ Two type of authentication:
 - User and password
 - Key based authentication
 
+**Tools**: `metasploit`
+
 SAMBA
 =====
 
 Linux implementation of SMB. Tools are more information in SMB and enumeration module.
+
+**Tools**: `smbmap`, `smbclient`, `metasploit`, `enum4linux`
 
 PRIVILEGE ESCALATION
 ============
@@ -237,7 +250,11 @@ Tool: Linux-Exploit-Suggester
 
 **Steps for exploitation**:
 
-We will need to find cron jobs scheduled or files being processed by cron jobs.
+1. We will need to find cron jobs scheduled or files being processed by cron jobs. If we find a file that is being modified every minute then it is probably a file being processed by a cron job.
+2. Move the following command (or similar that allows you to elevate privileges) to the script:
+```
+printf '#! /bin/bash/necho "<user> ALL=NOPASSWD:ALL" >> /etc/sudoers`> <path to script cron file>'
+```
 
 ## SUID Binaries
 
@@ -247,8 +264,9 @@ This permissions provides users to execute scripts or binaries with the permissi
 
 **Steps for exploitation**:
 
-1. Owner of the SUID binary
-2. Access permissions: executable permissions
+1. Be the owner of the SUID binary or have executable permissions. Find this with `ls -l` and a file with "s" permission and to check the type with `type <>`.
+2. If it is calling another binary remove it and copy the following: `cp /bin/bash <binary>`
+
 
 ## Hashes
 
