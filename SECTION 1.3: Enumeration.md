@@ -78,10 +78,9 @@ smbmap u <> p <> -d <. o el dominos> -H <ip> --download '<file>'
 
 ```
 msfconsole
-
     use auxiliary/scanner/smb/smb_version
-
     use auxiliary/scanner/smb/smb_enumusers
+    use auxiliary/scanner/smb/smb_enumshares
 ```
 
 **4. nmblookup**
@@ -232,6 +231,7 @@ ssh-run --script-args="ssh-run.cmd=<command>,ssh-run.username=<>,ssh-run.passwor
 msfconsole
     auxiliary/scanner/ssh/shh_login
     auxiliary/scanner/ssh/shh_version
+    auxiliary/scanner/ssh/ssh_enumusers
 ```
 
 HTTP
@@ -286,12 +286,17 @@ banner
 **2.2. Metasploit**:
 ```
 msfconsole
-
     use auxiliary/scanner/http/http_version
-
+    use auxiliary/scanner/http/http_header
     use auxiliary/scanner/http/brute_dirs
-
+    use auxiliary/scanner/http/file_dirs
     use auxiliary/scanner/http/robots_txt
+    use auxiliary/scanner/http/dir_scanner
+    use auxiliary/scanner/http/http_login
+    use auxiliary/scanner/http/apache_userdir_enum
+    auxiliary/scanner/http/dir_scanner
+    auxiliary/scanner/http/dir_listing
+    auxiliary/scanner/http/http_put
 ```
 
 
@@ -307,6 +312,7 @@ Allows many users to store information in databases. Data can be pulled from dat
 
 **1. Connection**:
 ```
+mysql <IP> -u <user> -p <pass>
 mysql -h <IP> -u <user>
 
     show databases;
@@ -323,10 +329,13 @@ mysql -h <IP> -u <user>
 **2. Metasploit**:
 ```
 msfconsole
-
+    use auxiliary/scanner/mysql/mysql_version
     use auxiliary/scanner/mysql/mysql_writable_dirs
-
     use auxiliary/scanner/mysql/mysql_hashdump
+    use auxiliary/scanner/mysql/mysql_login
+    use auxiliary/scanner/mysql/mysql_enum
+    use auxiliary/scanner/mysql/mysql_sql
+    use auxiliary/scanner/mysql/mysql_schemadump
 ```
 
 
@@ -395,4 +404,16 @@ msfconsole
 --script ms-sql-dump-hashes --script-args mssql.username=< >, mssql.passqord =<>
 
 --script ms-sql-xp-cmdshell --script-args mssql.username=< >, mssql.passqord =<>, ms-sql-xp-cmdshell.cmd="<>"
+```
+
+SMTP
+====
+Communication protcol used for the transmission of email.
+**Port**: 25/465/587
+```
+msfconsole
+    use auxiliary/scanner/smtp/smtp_version
+    use auxiliary/scanner/smtp/smtp_enum
+
+smtp-user-enum -U <users> -t <ip>
 ```

@@ -44,6 +44,8 @@ Extensible software used to host websites and web apps.
 
 Supports .asp, .aspx, .config, .php
 
+**Tools**: `metasploit`
+
 WEBDAV
 ======
 
@@ -83,6 +85,7 @@ File sharing protocol to share files and peripherrals in a local network.
     - `hydra`
     - `smbmap`
     - `metasploit`
+        - `use auxiliary/scanner/smb/smb_login`
 2. Execution of arbitrary commands
 
 RDP
@@ -211,6 +214,13 @@ File transfer protocol used to share files between a server and clients. Authent
 use exploit/unix/ftp/proftpd_133c_backdoor
 use post/linux/gather/hashdump
 use auxiliary/analyze/crack_linux
+search portscan
+search ftp
+use auxiliary/scanner/ftp/ftp_version
+search proftpd
+use auxiliary/scanner/ftp/anonymous
+use auxiliary/scanner/ftp/ftp_login
+    ftp <ip>
 ```
 
 SSH
