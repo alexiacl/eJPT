@@ -86,6 +86,7 @@ msfconsole
 **4. nmblookup**
 
 NetBIOS over TCP
+nmblookup to look computer name
 
 ```
 nmblookup -A <ip>
@@ -416,4 +417,12 @@ msfconsole
     use auxiliary/scanner/smtp/smtp_enum
 
 smtp-user-enum -U <users> -t <ip>
+nmap --script banner
+telnet <ip> <port>
+nc <smtp ip> <port>
+    VRFY <<user>@<hostname>>
+smtp-user-enum -U <user wordlist> -t <ip>
+msfconsole
+    use auxiliary/scanner/smtp/smtp_enum
+sendemail -f <mail> -t <user>@<hostname smtp> -s <ip> -u Fakemail -m <"content of mail"> -o tls=no
 ```
