@@ -411,6 +411,7 @@ SMTP
 ====
 Communication protcol used for the transmission of email.
 **Port**: 25/465/587
+It is possible to send emails if you are connected to smtp server via telnet.
 ```
 msfconsole
     use auxiliary/scanner/smtp/smtp_version

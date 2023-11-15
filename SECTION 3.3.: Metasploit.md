@@ -229,6 +229,7 @@ ls
 migrate
 ps
 search
+sysinfo
 shell
 upload
 showmount #enumerate share files in NFS Network File System server
@@ -256,7 +257,7 @@ search
     logged_on
     check_vm
     enum_av
-    enum_computer
+    enum_computers
     enum_patches
     enum_shares
     enum_configs
@@ -264,6 +265,7 @@ search
     enum_network
     enum_protections
     enum_system
+    enum_applications
     checkcontainer
     checkvm
     enum_users_history
