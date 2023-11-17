@@ -122,6 +122,8 @@ More dns information with:
 
 ```
 dnsrecon -d <domain name>
+dnsrecon -d <domain name> -a #AXFR query
+dnsrecon -d <domain name> -a -j <output file .json>
 ```
 
 ## WAF
@@ -209,11 +211,18 @@ Activaly engaging with the target.
 
 For zone transfer and bruteforce attacks:
 
-`dnsenum`
+```
+dnsenum <domain>
+dnsenum <domain> -o <output file>
+```
 
 When looking for hostnames, ips addresses, domain names in a dns server:
 
 `sudo vim /etc/host `
+
+When looking for default nameserver for the host machine:
+
+`cat /etc/resolv.conf`
 
 Another dns look up utility:
 
@@ -223,9 +232,17 @@ For zone transfer attacks:
 
 ```
 dig axfr @<domain>
-
+dig -x <IP> #reverse lookup on the IP
+dig -x <IP> +short
 fierce -dns
 ```
+
+**Metasploit**
+```
+use auxiliary/gather/enum_dns
+    set ENUM_BRU true #bruteforcing subdomains
+```
+
 
 ## Host discovery with Nmap
 

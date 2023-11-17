@@ -13,12 +13,13 @@ Windows implementation of files share is called **CIFS** and is the modern and e
 
 **Ports**:
 - 445
-- 139 on top of NetBIOS
+- 139 on top of NetBIOS (nmbd)
 
 
 **1. Nmap scripts SMB**
 
 `nmap -sC`: for default scripts
+`-sV`: for workgroups
 
 ```
 smb-os-discovery
@@ -51,20 +52,22 @@ smb-enum-services --script-args smbusername=<>,smbpassword=<>
 
 **2. SMBmap**
 
+**Notes**: shares and drives when used should be indicated with \$ at the end like: 'C$'
+
 Enumerate samba share drives across an entire domain
 
 ```
-smbmap u <> p <> -d <. o el dominio> -H <ip>
+smbmap -u <> -p <> -d <. o el dominio> -H <ip>
 
-smbmap u <> p <> -d <. o el dominos> -H <ip> -x <command>
+smbmap -u <> -p <> -d <. o el dominos> -H <ip> -x <command>
 
-smbmap u <> p <> -d <. o el dominos> -H <ip> -L : lista de drivers
+smbmap -u <> -p <> -d <. o el dominos> -H <ip> -L : drivers list
 
-smbmap u <> p <> -d <. o el dominos> -H <ip> -r <driver>
+smbmap -u <> -p <> -d <. o el dominos> -H <ip> -r <driver>
 
-smbmap u <> p <> -d <. o el dominos> -H <ip> --upload <path> <file>
+smbmap -u <> -p <> -d <. o el dominos> -H <ip> --upload <path to save the file> <path to file>
 
-smbmap u <> p <> -d <. o el dominos> -H <ip> --download '<file>'
+smbmap -u <> -p <> -d <. o el dominos> -H <ip> --download '<file>'
 ```
 
 **3. Metasploit**
@@ -104,13 +107,13 @@ FTP client to access SMB/CIFS resources on servers. Access files on windows syst
 ```
 smbclient -L <ip> -N
 
-smbclient //<ip>/Public -N
+smbclient //<ip>/<share> -N
 
             ls
 
             get <file>
 
-smbclient //<ip>/<user> -U <user>: with a user
+smbclient //<ip>/<share> -U <user>: with a user
 ```
 
 **5. rpccliente**
@@ -147,7 +150,7 @@ rpcclient -U "" -N <ip>
 
 `enum4linux -G <ip>`: groups
 
-`enum4linux -I <ip>`: printers
+`enum4linux -i <ip>`: printers
 
 **7. SMB Dictionary**
 
@@ -175,6 +178,16 @@ smbclient -L <ip> -U <user>
 
 smbclient //<ip>/<user> -U <user>
 ```
+
+**8. Windows machine**
+cmd.exe
+```
+net use Z: \\<ip>\<drive or share>$ <password> /user:<username>
+```
+1. Right click on Netwod
+2. Select Map Network drive
+3. Type drive
+4. Type machine IP `\\<ip>` in Folder field 
 
 
 FTP
@@ -213,7 +226,7 @@ Remote administration, create a remote shell, interact with remote machine over 
 
 **1. Nmap scripts**:
 ```
-ssh2-enum-algos
+ssh2-enum-algos #encryption algorithms
 
 ssh-hostkey --script-args ssh_hostkey=full
 
@@ -259,7 +272,7 @@ It uses aspx files
 
 - `curl http://<ip>/<path> | more`
 
-- `wget http://<ip>/<e.g.:index>`
+- `wget http://<ip>/<e.g.:index>` #index for structure of web page
 
 - `lynx http://<ip>`
 
@@ -358,7 +371,7 @@ mysql-audit --script-args="mysql-audit.username= '<>', mysql-audit.password= '<>
 
 mysql-dump-hashes --script-args="username= '<>',password= '<>' "
 
-mysqpl-query --script-args="query=<>',username"= '<>',password= '<>' "
+mysqpl-query --script-args="query='<>',username"= '<>',password= '<>' "
 ```
 
 MSSQL
@@ -396,15 +409,15 @@ msfconsole
 
 --script ms-sql-ntlm-info --script-args mssql.instance-port=<port>
 
---script ms-sql-brute --script-args userdb=<PATH >, passdb=<PATH wordlist>
+--script ms-sql-brute --script-args userdb=<PATH >,passdb=<PATH wordlist>
 
 --script ms-empty-password
 
---script ms-sql-query --script-args mssql.username=< >, mssql.passqord =<>, ms-sql-query=<> -oN <file output>
+--script ms-sql-query --script-args mssql.username=< >,mssql.passqord =<>,ms-sql-query=<> -oN <file output>
 
---script ms-sql-dump-hashes --script-args mssql.username=< >, mssql.passqord =<>
+--script ms-sql-dump-hashes --script-args mssql.username=< >,mssql.passqord =<>
 
---script ms-sql-xp-cmdshell --script-args mssql.username=< >, mssql.passqord =<>, ms-sql-xp-cmdshell.cmd="<>"
+--script ms-sql-xp-cmdshell --script-args mssql.username=< >,mssql.passqord =<>, ms-sql-xp-cmdshell.cmd="<>"
 ```
 
 SMTP

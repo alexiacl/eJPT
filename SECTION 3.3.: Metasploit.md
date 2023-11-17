@@ -30,6 +30,8 @@ Important location:
 - /usr/share/metasploit-framework/modules
 - ~/.ms4/modules
 
+**Notes**: `search platform:windows port:135 target:XP type:exploit`
+
 ## PENETRATION TESTING WITH METASPLOIT
 
 We can adopt PTES methodology as a roadmap with the various phases that make up a penetration test and how Metasploit can be integrated in to each phase.
