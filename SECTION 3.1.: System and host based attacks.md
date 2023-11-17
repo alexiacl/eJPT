@@ -102,6 +102,8 @@ GUI remote access oriticik to connect and interact with Windows system.
 
 **Port**: 3389 or any TCP port
 
+`run getgui -e -u <> -p <>`
+
 Authentication is made with username and password.
 
 WINRM
