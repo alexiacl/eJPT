@@ -201,6 +201,12 @@ File transfer protocol: store files on a server an access them remotely
 
 `ftp <ip>`: to connect via ftp
 
+```
+ftp> put <shell.aspx>
+ftp> download <>
+ftp> get <>
+```
+
 **2. Hydra**
 
 `hydra -L <wordlist> -P <wordlist> <IP> ftp`
@@ -253,8 +259,11 @@ HTTP
 
 Port 80, when I see that I open web browse
 
+Always when we see tha application name like ProcessMaker search on internet for defaulrt passwords in this case admin:admin and also for epxloits `search processmaker`
+
 **Notes**:
 - WebDAV, protocol that allows us to easily save, edit, copy, move, and share files from web servers.
+- Look in dav/www
 
 **1. IIS**
 
@@ -296,6 +305,7 @@ banner
 **2.1. Nmap scripts:**
 
 `banner`: information that my machine receives when it connects remotely the first time to another machine
+**Notes**: Look for /phpinfo.php
 
 **2.2. Metasploit**:
 ```
@@ -328,17 +338,20 @@ Allows many users to store information in databases. Data can be pulled from dat
 ```
 mysql <IP> -u <user> -p <pass>
 mysql -h <IP> -u <user>
-
     show databases;
-
     use <db>;
-
     select count(*) from authors;
-
     select * from authors;
-
     select load_file("<path>")
+    update <table> SET <table column>=<MD5('pass')> WHERE <table column>=<'user'>
 ```
+
+**Notes**
+- **Wordpress**
+    - http://\<ip>/wordpress/wp-admin
+    - `cat wp-config.php in /wordpress`
+    - `download phpmyadmin.conf`
+
 
 **2. Metasploit**:
 ```
