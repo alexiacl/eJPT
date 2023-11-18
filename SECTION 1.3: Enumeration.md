@@ -225,6 +225,7 @@ SSH
 Remote administration, create a remote shell, interact with remote machine over a secured channel.
 
 `scp <user>@<ip>:<path to file> #download files via ssh`
+`ssh -i id_rsa <>@<>`
 
 **Port**: 22
 
