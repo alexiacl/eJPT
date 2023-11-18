@@ -226,7 +226,7 @@ download <path>
 edit <file>
 execute -f <command to be run on target system> -i -H
 getuid
-hashdump #(run post/windows/gather/hashdump)
+hashdump #(run post/windows/gather/hashdump & post/linux/gather/hashdump)
 idletime
 ipconfig
 ls
@@ -285,6 +285,7 @@ search
 **1. Bypassing UAC**
 
 `search bypassuac_injection`
+`search hta_server`
 
 **2. Token impersonation**
 
