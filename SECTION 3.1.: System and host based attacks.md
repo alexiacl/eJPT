@@ -45,6 +45,7 @@ Extensible software used to host websites and web apps.
 Supports .asp, .aspx, .config, .php
 
 **Tools**: `metasploit`
+- `search webdav_upload_asp`
 
 WEBDAV
 ======
@@ -120,6 +121,13 @@ Remote management protocol to facilitate remote access to windows systems over H
 
 **Steps for exploitation**:
 - Tools: `crackmapexec`, `evil-winrm`
+```
+search winrm_login
+search winrm_auth_methods
+search winrm_script
+search winrm_cmd
+search
+```
 
 PRIVILEGE ESCALATION
 ====================
@@ -142,6 +150,8 @@ User account crontrol used to ensure that changes in the operating system requir
 **Steps for exploiting**:
 1. Access with a user account of local administrator group
 2. **Tool**: `UACMe`
+
+Located in `/root/Desktop/tools/UACME`
 
 ## Tokens
 
