@@ -274,6 +274,8 @@ It uses aspx files
 
 - `whatweb <ip>`: server version, default page, xss protection...
 
+- `shcheck` : headers 
+
 - `http <ip>`: headers
 
 - `dirb http://<ip>`: directories
